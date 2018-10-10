@@ -22,3 +22,4 @@ select,
 textarea {
     max-width: 280px;
 }
+li.nav-item {padding-right:2em; font-size: 1.5em}
