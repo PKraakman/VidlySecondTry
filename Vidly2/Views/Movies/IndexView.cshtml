@@ -1,0 +1,18 @@
+﻿
+@model Vidly2.ViewModels.MoviesIndexViewModel
+
+
+@{
+    ViewBag.Title = "IndexView";
+}
+
+<h2> Movies IndexView</h2>
+
+<ul>@{
+        foreach (var movie in Model.movies)
+        {
+            <li>@movie.Name</li>
+        }
+    }
+</ul>
+
