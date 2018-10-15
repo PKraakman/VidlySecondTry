@@ -14,7 +14,8 @@ namespace Vidly2.Controllers
         {
             new Customer {Name = "Pieter Kraakman", Id = 1},
             new Customer {Name = "Kurtis Somethingorother", Id = 2},
-            new Customer {Name = "Joseph Wright", Id = 3}
+            new Customer {Name = "Joseph Wright", Id = 3},
+            new Customer {Name = "Lori Groger", Id = 4}
         };
 
         // GET: Customers
