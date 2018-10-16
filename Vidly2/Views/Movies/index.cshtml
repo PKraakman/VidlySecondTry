@@ -1,4 +1,5 @@
 ﻿
+
 @model Vidly2.ViewModels.MoviesIndexViewModel
 
 
@@ -8,11 +9,12 @@
 
 <h2> Movies IndexView</h2>
 
-<ul>@{
+<ul>
+    @{
         foreach (var movie in Model.movies)
         {
-            <li>@movie.Name</li>
+            <li><a href="/movies/Edit/@movie.Id">@movie.Name</a> </li>
         }
-    }
+}
 </ul>
 

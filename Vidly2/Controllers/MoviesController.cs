@@ -13,7 +13,8 @@ namespace Vidly2.Controllers
         private List<Movie> movies = new List<Movie>
         {
             new Movie {Id = 1, Name = "Shrek!"},
-            new Movie {Id = 2, Name = "Zootopia"}
+            new Movie {Id = 2, Name = "Zootopia"},
+            new Movie {Id = 3, Name="Star Wars"}
         };
 
         // GET: Movies
@@ -43,7 +44,15 @@ namespace Vidly2.Controllers
 
         public ActionResult Edit(int id)
         {
-            return Content(String.Format("Now editing id: {0}", id));
+            //return Content(String.Format("Now editing id: {0}", id));
+
+            foreach (var movie  in movies)
+            {
+                if (movie.Id == id)
+                    return View(movie);
+            }
+
+            return View(new Movie());
         }
 
 
@@ -61,7 +70,7 @@ namespace Vidly2.Controllers
                 movies = movies
             };
 
-            return View("IndexView",viewModel);
+            return View("Index",viewModel);
 
 
 
