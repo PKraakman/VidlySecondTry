@@ -222,9 +222,38 @@
     <Compile Include="Migrations\201812271736094_ApplyAnnotationsToCustomer.Designer.cs">
       <DependentUpon>201812271736094_ApplyAnnotationsToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812281533442_AddNameToMembershipType.cs" />
+    <Compile Include="Migrations\201812281533442_AddNameToMembershipType.Designer.cs">
+      <DependentUpon>201812281533442_AddNameToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812281536402_UpdateMembershipTypes.cs" />
+    <Compile Include="Migrations\201812281536402_UpdateMembershipTypes.Designer.cs">
+      <DependentUpon>201812281536402_UpdateMembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812281625557_AddBirthDateToCustomer.cs" />
+    <Compile Include="Migrations\201812281625557_AddBirthDateToCustomer.Designer.cs">
+      <DependentUpon>201812281625557_AddBirthDateToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812281655233_SetBirthDateNullable.cs" />
+    <Compile Include="Migrations\201812281655233_SetBirthDateNullable.Designer.cs">
+      <DependentUpon>201812281655233_SetBirthDateNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812281832201_AddGenre.cs" />
+    <Compile Include="Migrations\201812281832201_AddGenre.Designer.cs">
+      <DependentUpon>201812281832201_AddGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812281832593_SeedGenres.cs" />
+    <Compile Include="Migrations\201812281832593_SeedGenres.Designer.cs">
+      <DependentUpon>201812281832593_SeedGenres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812281859177_AddFieldsToMovie.cs" />
+    <Compile Include="Migrations\201812281859177_AddFieldsToMovie.Designer.cs">
+      <DependentUpon>201812281859177_AddFieldsToMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -232,6 +261,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerIndexViewModel.cs" />
+    <Compile Include="ViewModels\MoviesIndexViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +329,10 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Home\Dump.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Customers\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -331,6 +365,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812271736094_ApplyAnnotationsToCustomer.resx">
       <DependentUpon>201812271736094_ApplyAnnotationsToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281533442_AddNameToMembershipType.resx">
+      <DependentUpon>201812281533442_AddNameToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281536402_UpdateMembershipTypes.resx">
+      <DependentUpon>201812281536402_UpdateMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281625557_AddBirthDateToCustomer.resx">
+      <DependentUpon>201812281625557_AddBirthDateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281655233_SetBirthDateNullable.resx">
+      <DependentUpon>201812281655233_SetBirthDateNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281832201_AddGenre.resx">
+      <DependentUpon>201812281832201_AddGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281832593_SeedGenres.resx">
+      <DependentUpon>201812281832593_SeedGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281859177_AddFieldsToMovie.resx">
+      <DependentUpon>201812281859177_AddFieldsToMovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

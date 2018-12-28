@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using Vidly2.Models;
@@ -10,12 +11,19 @@ namespace Vidly2.Controllers
 {
     public class MoviesController : Controller
     {
-        private List<Movie> movies = new List<Movie>
+        private ApplicationDbContext _context;
+
+        public MoviesController()
         {
-            new Movie {Id = 1, Name = "Shrek!"},
-            new Movie {Id = 2, Name = "Zootopia"},
-            new Movie {Id = 3, Name="Star Wars"}
-        };
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
+
+    
 
         // GET: Movies
         public ActionResult Random()
@@ -46,17 +54,17 @@ namespace Vidly2.Controllers
         {
             //return Content(String.Format("Now editing id: {0}", id));
 
-            foreach (var movie  in movies)
-            {
-                if (movie.Id == id)
-                    return View(movie);
-            }
+            //foreach (var movie  in movies)
+            //{
+            //    if (movie.Id == id)
+            //        return View(movie);
+            //}
 
             return View(new Movie());
         }
 
 
-        // movies
+        // movies/Index
         public ActionResult Index(int? pageIndex, string sortby)
         {
             if (!pageIndex.HasValue)
@@ -67,13 +75,21 @@ namespace Vidly2.Controllers
 
             var viewModel = new MoviesIndexViewModel
             {
-                movies = movies
+                Movies = _context.Movies.Include(m => m.Genre).ToList()
             };
 
-            return View("Index",viewModel);
+            return View(viewModel);
+        }
 
+        //movies/details
+        public ActionResult Details(int Id)
+        {
+            var movie = _context.Movies.Include(m => m.Genre).FirstOrDefault(m => m.Id == Id);
 
+            if (movie == null)
+                return HttpNotFound();
 
+            return View(movie);
         }
 
         // movies/released/{year}/{month}

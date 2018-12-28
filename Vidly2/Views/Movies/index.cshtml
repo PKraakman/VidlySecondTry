@@ -1,20 +1,24 @@
-﻿
+﻿@model Vidly2.ViewModels.MoviesIndexViewModel
 
-@model Vidly2.ViewModels.MoviesIndexViewModel
-
-
-@{
-    ViewBag.Title = "IndexView";
-}
-
-<h2> Movies IndexView</h2>
-
-<ul>
-    @{
-        foreach (var movie in Model.movies)
-        {
-            <li><a href="/movies/Edit/@movie.Id">@movie.Name</a> </li>
-        }
-}
-</ul>
+<div>
+    <h2>Movies</h2>
+    
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Movie</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model.Movies)
+            {
+                <tr>
+                    <td>@Html.ActionLink(movie.Name,"Details", new { Id = movie.Id }) </td>
+                    <td>@movie.Genre.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
