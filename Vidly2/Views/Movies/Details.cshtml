@@ -1,0 +1,22 @@
+﻿@model Vidly2.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+
+    var movie = Model;
+}
+
+<div>
+    <h2>@movie.Name</h2>
+    <ul>
+        <li>Genre: @movie.Genre.Name</li>
+        <li>Release Date: @movie.ReleaseDate.ToString("MM/dd/yyyy")</li>
+        <li>Date Added: @movie.DateAdded.ToString("MM/dd/yyyy")</li>
+        <li>Number In Stock: @movie.QtyInStock</li>
+
+    </ul>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

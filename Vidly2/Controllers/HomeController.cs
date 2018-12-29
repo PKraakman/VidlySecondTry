@@ -26,5 +26,33 @@ namespace Vidly2.Controllers
 
             return View();
         }
+
+        public ActionResult Dump()
+        {
+            var viewResult = new ViewResult();
+
+            viewResult.ViewData.Model = new DumpData { Title = "Title form model", Message = "message from dumpdata" };
+
+            viewResult.ViewData["info"] = "Info from viewData";
+
+            return viewResult;
+        }
+    }
+
+    public class DumpData
+    {
+        public string Title { get; set; }
+        public string Message { get; set; }
+        public string test { get; set; }
+
+        public DumpData()
+        {
+            test = "default value for test";
+        }
+
+        public DumpData(string testvalue)
+        {
+            test = testvalue;
+        }
     }
 }
