@@ -202,6 +202,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811160029492_initialLoad.cs" />
+    <Compile Include="Migrations\201811160029492_initialLoad.Designer.cs">
+      <DependentUpon>201811160029492_initialLoad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811160033054_addCustomers.cs" />
+    <Compile Include="Migrations\201811160033054_addCustomers.Designer.cs">
+      <DependentUpon>201811160033054_addCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811160035242_addMovies.cs" />
+    <Compile Include="Migrations\201811160035242_addMovies.Designer.cs">
+      <DependentUpon>201811160035242_addMovies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -294,6 +307,17 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201811160029492_initialLoad.resx">
+      <DependentUpon>201811160029492_initialLoad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811160033054_addCustomers.resx">
+      <DependentUpon>201811160033054_addCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811160035242_addMovies.resx">
+      <DependentUpon>201811160035242_addMovies.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
