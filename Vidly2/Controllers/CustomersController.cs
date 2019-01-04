@@ -11,14 +11,7 @@ namespace Vidly2.Controllers
 {
     public class CustomersController : Controller
     {
-        //private List<Customer> _customers = new List<Customer>
-        //{
-        //    new Customer {Name = "Pieter Kraakman", Id = 1},
-        //    new Customer {Name = "Kurtis Ley", Id = 2},
-        //    new Customer {Name = "Joseph Wright", Id = 3},
-        //    new Customer {Name = "Lori Groger", Id = 4}
-        //};
-
+     
         private ApplicationDbContext _context;
 
         public CustomersController()
@@ -33,7 +26,35 @@ namespace Vidly2.Controllers
 
         public ActionResult New()
         {
-            return View();
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var customer = new Customer();
+            var viewModel = new CustomerFormViewModel
+            {
+                MembershipTypes = membershipTypes,
+                Customer = customer
+            };
+
+            return View("CustomerForm",viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Customer customer)
+        {
+            if(customer.Id == 0)
+                _context.Customers.Add(customer);
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthdate = customer.Birthdate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.isSubscribedToNewsLetter = customer.isSubscribedToNewsLetter;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index","Customers");
         }
 
 
@@ -49,25 +70,32 @@ namespace Vidly2.Controllers
         }
 
         //customers/details/id
-
         public ActionResult Details(int id)
         {
             var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
-
-            return View(customer);
-        }
-
-        
-
-        // customers/edit/id
-        public ActionResult Edit(int Id)
-        {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == Id);
 
             if (customer == null)
                 return HttpNotFound();
 
             return View(customer);
+        }
+
+
+        // customers/edit/id
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+                return HttpNotFound();
+
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+
+            return View("CustomerForm", viewModel);
         }
     }
 }
